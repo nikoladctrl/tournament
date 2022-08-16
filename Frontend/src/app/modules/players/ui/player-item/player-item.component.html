@@ -1,0 +1,8 @@
+<ng-container *ngIf="player">
+    <div class="container">
+        <div class="content">
+            <span [routerLink]="[player.id]">{{ player.name }}</span>
+            <span>{{ player.won }}</span>
+        </div>
+    </div>
+</ng-container>

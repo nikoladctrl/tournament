@@ -1,0 +1,31 @@
+<ng-container *ngIf="match">
+    <div class="container" [routerLink]="[match.id]">
+        <div class="headlines">
+            <span>Name</span>
+            <span>Final result</span>
+            <span>First set</span>
+            <span>Second set</span>
+            <span>Third set</span>
+            <span>Fourth set</span>
+            <span>Fifth set</span>
+        </div>
+        <div class="playerOne">
+            <span>{{ match.playerOne.name }}</span>
+            <span>{{ match.result | extractTheSet:0:1 }}</span>
+            <span>{{ match.result | extractTheSet:1:1 }}</span>
+            <span>{{ match.result | extractTheSet:2:1 }}</span>
+            <span>{{ match.result | extractTheSet:3:1 }}</span>
+            <span>{{ match.result | extractTheSet:4:1 }}</span>
+            <span>{{ match.result | extractTheSet:5:1 }}</span>
+        </div>
+        <div class="playerTwo">
+            <span>{{ match.playerTwo.name }}</span>
+            <span>{{ match.result | extractTheSet:0:2 }}</span>
+            <span>{{ match.result | extractTheSet:1:2 }}</span>
+            <span>{{ match.result | extractTheSet:2:2 }}</span>
+            <span>{{ match.result | extractTheSet:3:2 }}</span>
+            <span>{{ match.result | extractTheSet:4:2 }}</span>
+            <span>{{ match.result | extractTheSet:5:2 }}</span>
+        </div>
+    </div>
+</ng-container>

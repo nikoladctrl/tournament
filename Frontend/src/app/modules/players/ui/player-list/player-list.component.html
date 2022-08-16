@@ -1,0 +1,9 @@
+<ng-container *ngIf="players$ | async as players">
+    <button>
+        <a routerLink="new">New player</a>
+    </button>
+    <div class="container">
+        <h4>List of players</h4>
+        <app-player-item *ngFor="let player of players; trackById" [player]="player"></app-player-item>
+    </div>
+</ng-container>

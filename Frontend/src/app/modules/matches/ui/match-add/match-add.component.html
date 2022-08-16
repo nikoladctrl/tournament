@@ -1,0 +1,63 @@
+<ng-container *ngIf="players$ | async as players">
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <!-- First form field -->
+        <div>
+            <label>First player's name</label><br>
+            <select formControlName="playerOneName" aria-placeholder="Select first player">
+                <option value="null">--</option>
+                <option *ngFor="let player of players" [value]="player.id">{{ player.name }}</option>
+            </select>
+        </div>
+        
+        <!-- Second form field -->
+        <div>
+            <label>First player's name</label><br>
+            <select formControlName="playerTwoName" aria-placeholder="Select second player">
+                <option value="null">--</option>
+                <option *ngFor="let player of players" [value]="player.id">{{ player.name }}</option>
+            </select>
+        </div>
+        <small 
+            style="color: red" 
+            *ngIf="
+                form.controls['playerOneName'].hasError('sameNames') || 
+                form.controls['playerTwoName'].hasError('sameNames')"
+            >Can't choose the same player twice!</small>
+        
+        <!-- Third form field -->
+        <label>Result</label>
+        <button 
+            type="button" 
+            [disabled]="form.controls['playerOneName'].hasError('sameNames') || form.controls['playerTwoName'].hasError('sameNames') || !form.touched"
+            (click)="addNewSet()"
+            >New set</button>
+        
+        <ng-container formArrayName="sets">
+    
+            <ng-container *ngFor="let setForm of sets.controls; let i = index;">
+    
+                <div [formGroup]="setForm">
+                    <span>
+                        <input type="number" min="0" placeholder="First player's points" formControlName="pOnePoints{{i}}">
+                        <input type="number" min="0" placeholder="Second player's points" formControlName="pTwoPoints{{i}}">
+                        <span class="remove-set" (click)="removeSet(i)">&nbsp;x</span>
+                    </span><br>
+
+                    <small 
+                        class="invalid-set" 
+                        *ngIf="
+                            setForm.hasError('invalidSet') || 
+                            setForm.controls['pOnePoints' + i]?.hasError('invalidSet') || 
+                            setForm.controls['pTwoPoints' + i]?.hasError('invalidSet')"
+                            >Not a valid set result!</small>
+                </div>
+    
+            </ng-container>
+    
+        </ng-container>
+        <button type="submit" [disabled]="!form.valid || this.sets.controls.length < 3 || this.sets.controls.length > 5">Submit</button>
+    
+    </form>
+
+</ng-container>

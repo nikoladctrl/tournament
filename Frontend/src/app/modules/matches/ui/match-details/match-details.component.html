@@ -1,0 +1,45 @@
+<ng-container *ngIf="match$ | async as match">
+    <h4>Match info</h4>
+    <div class="container">
+        <div class="content">
+            <div class="firstInfo">
+                <span>
+                    <p><strong>Name</strong></p>
+                    <p>{{ match.playerOne.name }}</p>
+                </span>
+            </div>
+            <div class="result-info">
+                <span>
+                    <p>Final result</p>
+                    <p>{{ match.result | fullSet:0 }}</p>
+                </span>
+                <span>
+                    <p>First set</p>
+                    <p>{{ match.result | fullSet:1 }}</p>
+                </span>
+                <span>
+                    <p>Second set</p>
+                    <p>{{ match.result | fullSet:2 }}</p>
+                </span>
+                <span>
+                    <p>Third set</p>
+                    <p>{{ match.result | fullSet:3 }}</p>
+                </span>
+                <span>
+                    <p>Fourth set</p>
+                    <p>{{ match.result | fullSet:4 }}</p>
+                </span>
+                <span>
+                    <p>Fifth set</p>
+                    <p>{{ match.result | fullSet:5 }}</p>
+                </span>
+            </div>
+            <div class="second-info">
+                <span>
+                    <p><strong>Name</strong></p>
+                    <p>{{ match.playerTwo.name }}</p>
+                </span>
+            </div>
+        </div>
+    </div>
+</ng-container>

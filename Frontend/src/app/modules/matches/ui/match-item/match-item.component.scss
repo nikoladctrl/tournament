@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    display: flex;
+    border: 1px black solid;
+    flex-direction: column;
+    margin: 5px 0;
+
+    .headlines, .playerOne, .playerTwo {
+        display: flex;
+        flex: 1;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .playerTwo {
+        border-top: 1px black dashed;
+    }
+
+    .headlines {
+        border-bottom: 1px black dotted;
+    }
+
+    .playerOne span, .playerTwo span, .headlines span {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: gray;
+    }
+}

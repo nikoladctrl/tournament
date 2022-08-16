@@ -1,0 +1,29 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <h4>Player info</h4>
+    <div class="container">
+        <div class="content">
+            <p><strong>Name: </strong>&nbsp;{{ vm.player?.name }}</p>
+            <p><strong>Description: </strong>&nbsp;{{ vm.player?.description }}</p>
+            <p><strong>Sets won: </strong>&nbsp;{{ vm.player?.won }}</p>
+        </div>
+        <div>
+            <h4>Matches</h4>
+            <div *ngFor="let match of vm.matches">
+                <div *ngIf="match.playerOneId === vm.player?.id">
+                    <h4>Home</h4>
+                    <p>Opponent: {{ match.playerTwo.name }}</p>
+                    <p>Result: {{ match.result }}</p>
+                </div>
+                <div *ngIf="match?.playerTwoId === vm.player?.id">
+                    <h4>Visitors</h4>
+                    <p>Opponent: {{ match.playerOne.name }}</p>
+                    <p>Result: {{ match.result }}</p>
+                </div>
+            </div>
+            <div *ngIf="vm.matches.length === 0">
+                <p>This player hasn't played any match yet!</p>
+            </div>
+        </div>
+    </div>
+    
+</ng-container>

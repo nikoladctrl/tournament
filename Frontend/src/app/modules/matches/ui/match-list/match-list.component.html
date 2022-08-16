@@ -1,0 +1,7 @@
+<ng-container *ngIf="matches$ | async as matches">
+    <h4>List of all matches</h4>
+    <button>
+        <a routerLink="new">New match</a>
+    </button>
+    <app-match-item *ngFor="let match of matches" [match]="match"></app-match-item>
+</ng-container>

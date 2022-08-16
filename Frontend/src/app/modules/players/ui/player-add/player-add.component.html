@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <label>Name</label>
+        <input type="text" formControlName="name" placeholder="Name">
+        <small *ngIf="form.controls['name'].hasError('nameExists')">Name already exists!</small>
+    </div>
+    <div>
+        <label>Description</label>
+        <input type="text" formControlName="description" placeholder="Description">
+        <small *ngIf="form.controls['description'].hasError('minlength')">Length is too small</small>
+    </div>
+    <button type="submit" [disabled]="!form.valid">Submit</button>
+</form>

@@ -1,0 +1,22 @@
+.container {
+    
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+    
+    .content {
+        width: 40%;
+        display: flex;
+        
+        span {
+            flex: 1;
+            justify-content: center;
+            display: flex;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: gray;
+        }
+    }
+}
